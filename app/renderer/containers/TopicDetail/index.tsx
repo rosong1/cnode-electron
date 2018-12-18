@@ -1,7 +1,9 @@
 import * as React from "react";
 import { getTopicsDetail } from '@renderer/services'
 import "./index.less"
-import Tag from "@renderer/components/Tag"
+import Tag, {isHighLightTag, getTagName} from "@renderer/components/Tag"
+import BackBtn from "@renderer/containers/TopicDetail/BackBtn"
+
 import {resetScroll} from '@renderer/util/global'
 
 
@@ -33,10 +35,11 @@ export default class TopicDetail extends React.Component<TopicDetailProps, Topic
     }
 
     render() {
-        console.error("this.state.data ", this.state.data)
         return <div className="topic-detail-wrapper" >
+                <BackBtn />
+
             <div className="topic-detail-title">
-                <Tag name="置顶" isHighLight={true}></Tag>
+                <Tag name={getTagName(this.state.data)} isHighLight={isHighLightTag(this.state.data)}></Tag>
                 <h3>{this.state.data.title}</h3>
             </div>
             <div 
@@ -44,6 +47,7 @@ export default class TopicDetail extends React.Component<TopicDetailProps, Topic
                 dangerouslySetInnerHTML={{ 
                     __html: this.state.data && addProtol(this.state.data.content) }}>
             </div>
+            
         </div>;
     }
 }

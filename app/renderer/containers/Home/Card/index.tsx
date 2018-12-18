@@ -2,7 +2,7 @@ import * as React from "react";
 import './card.less'
 import { TopicModel } from "@renderer/models";
 import { withRouter } from "react-router-dom";
-import Tag from "@renderer/components/Tag"
+import Tag, {isHighLightTag, getTagName} from "@renderer/components/Tag"
 
 interface CardProps {
     history?: any;
@@ -14,25 +14,6 @@ interface CardState {}
 interface TimeType {
     type: string,
     time: number
-}
-
-const isHighLightTag = (props: TopicModel): boolean => props.good || props.top
-
-const getTagName = (props: TopicModel): string => {
-    const TOP = "置顶"
-    const GOOD = "精华"
-    const ASK = "问答"
-    const SHARE = "分享"
-
-    const normalMap = {
-        ask: ASK,
-        share: SHARE
-    }
-
-    if (props.top) return TOP
-    if (props.good) return GOOD
-
-    return normalMap[props.tab] || ''
 }
 
 const getTimeTip = (d: Date): string => {
