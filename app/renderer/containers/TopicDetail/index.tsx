@@ -3,8 +3,10 @@ import { getTopicsDetail } from '@renderer/services'
 import "./index.less"
 import Tag, {isHighLightTag, getTagName} from "@renderer/components/Tag"
 import BackBtn from "@renderer/containers/TopicDetail/BackBtn"
+import CommentList from "./CommentList"
 
 import {resetScroll} from '@renderer/util/global'
+import {fixImgUrl} from '@renderer/util/index'
 
 
 interface TopicDetailProps {
@@ -30,8 +32,12 @@ export default class TopicDetail extends React.Component<TopicDetailProps, Topic
     async componentDidMount() {
         resetScroll()
         const { topicId } = this.props.match.params
-        const res = await getTopicsDetail(topicId)
-        this.setState({ data: res.data })
+        const {data = {} } = await getTopicsDetail(topicId)
+        const detailData = {...data, author: {
+            ...data.author,
+            avatar_url: fixImgUrl(data.author.avatar_url)
+        }}
+        this.setState({ data: detailData })
     }
 
     render() {
@@ -47,7 +53,7 @@ export default class TopicDetail extends React.Component<TopicDetailProps, Topic
                 dangerouslySetInnerHTML={{ 
                     __html: this.state.data && addProtol(this.state.data.content) }}>
             </div>
-            
+            <CommentList dataSource={[]}></CommentList>
         </div>;
     }
 }

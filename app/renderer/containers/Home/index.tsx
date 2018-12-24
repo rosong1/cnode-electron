@@ -19,7 +19,16 @@ export default class Home extends React.Component<HomeProps, HomeState> {
 
     async componentDidMount() {
         const topics = await getTopics()
-        this.setState({topics: topics.data})
+        const fixImgUrl = (url: string): string => {
+            return url.indexOf('http') !== -1
+                ? url
+                : `https:${url}`
+        }
+        const data = topics.data.map(item => ({...item, author: {
+            ...item.author,
+            avatar_url: fixImgUrl(item.author.avatar_url)
+        }}))
+        this.setState({topics: data})
     }
 
     private renderCardList = (topics: TopicModel[]) => {
