@@ -53,7 +53,7 @@ export default class TopicDetail extends React.Component<TopicDetailProps, Topic
                 dangerouslySetInnerHTML={{ 
                     __html: this.state.data && addProtol(this.state.data.content) }}>
             </div>
-            <CommentList dataSource={[]}></CommentList>
+            <CommentList dataSource={[1, 2]}></CommentList>
         </div>;
     }
 }
