@@ -1,5 +1,3 @@
-import { object } from 'prop-types';
-
 export const fixImgUrl = (url: string): string => {
     return url.indexOf('http') !== -1
         ? url
@@ -9,7 +7,7 @@ export const fixImgUrl = (url: string): string => {
 export const classNames = (config: object): string => {
     const tempArr = []
     for (const key in config) {
-        if (object.hasOwnProperty(key)) {
+        if (config.hasOwnProperty(key)) {
             config[key] && tempArr.push(key)
         }
     }

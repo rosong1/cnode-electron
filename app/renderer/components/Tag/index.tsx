@@ -22,6 +22,8 @@ export const getTagName = (props: TopicModel): string => {
     return normalMap[props.tab] || ''
 }
 const Tag = ({ name = "", isHighLight = false }) => {
+    if (!name) return null;
+
     return (<div className={classNames({
         "tag": true,
         "tag-highlight": isHighLight

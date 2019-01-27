@@ -6,7 +6,14 @@ const instance = axios.create({
 });
 
 export const apiGet = (url: string, params?: object) => {
-    return instance.get(url, params).then(result => result.data)
+    if (params && typeof params === 'object') {
+        let paramArr = [];
+        for (const key in params) {
+            paramArr.push(`${key}=${params[key]}`)
+        }
+        url += `?${paramArr.join('&')}`
+    }
+    return instance.get(url).then(result => result.data)
 }
 
 export const apiPost = (url: string, params?: object) => {

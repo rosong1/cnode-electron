@@ -1,15 +1,15 @@
-import * as React from "react";
+import * as React from "react"
 import { getTopics } from '@renderer/services'
 import { TopicModel } from '@renderer/models'
 
 import Card from '@renderer/containers/Home/components/Card'
-interface HomeProps {}
+interface IProps {}
 
-interface HomeState {
+interface IState {
     topics: TopicModel[]
 }
 
-export default class Home extends React.Component<HomeProps, HomeState> {
+export default class Ask extends React.Component<IProps, IState> {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,7 +18,7 @@ export default class Home extends React.Component<HomeProps, HomeState> {
     }
 
     async componentDidMount() {
-        const topics = await getTopics()
+        const topics = await getTopics({tab: 'ask'})
         const fixImgUrl = (url: string): string => {
             return url.indexOf('http') !== -1
                 ? url

@@ -22,13 +22,17 @@
         "app/*", 
         "app/renderer/*"
       ],
-      "@renderer/*": ["./app/renderer/*"]
+      "@renderer/*": ["./app/renderer/*"],
+      "*": [
+        "node_modules/*",
+        "types/*"
+      ]
     },
     "allowSyntheticDefaultImports": true,
   },
   "include": [
-    "app/renderer/*.ts",
-    "app/renderer/*.tsx",
+    "app/**/*.ts",
+    "app/**/*.tsx",
   ], 
   "exclude": ["dist", "build", "node_modules"]
 }
