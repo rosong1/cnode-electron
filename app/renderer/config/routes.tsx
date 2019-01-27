@@ -52,24 +52,6 @@ const routes = [
       ]
     },
     {
-      path: "/newone",
-      name: "新手入门",
-      component: () => <h2>新手入门</h2>,
-      exact: true,
-    },
-    {
-      path: "/apidocs",
-      name: "API",
-      component: () => <h2>API</h2>,
-      exact: true,
-    },
-    {
-      path: "/about",
-      name: "关于",
-      component: () => <h2>关于</h2>,
-      exact: true,
-    },
-    {
       path: "/sign",
       name: "登录与注册",
       component: () => <h2>登录与注册</h2>,

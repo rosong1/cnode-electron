@@ -37,21 +37,6 @@ const menuConfig = [
       ]
     },
     {
-      path: "/newone",
-      name: "新手入门",
-      icon: "",
-    },
-    {
-      path: "/apidocs",
-      name: "API",
-      icon: "",
-    },
-    {
-      path: "/about",
-      name: "关于",
-      icon: "",
-    },
-    {
       path: "/sign",
       name: "登录与注册",
       icon: "",
