@@ -34,5 +34,5 @@
     "app/**/*.ts",
     "app/**/*.tsx",
   ], 
-  "exclude": ["dist", "build", "node_modules"]
+  "exclude": ["node_modules"]
 }

@@ -35,7 +35,7 @@ export default class MenuView extends React.Component<MenuViewProps, MenuViewSta
         const hashPath = window.location.hash.split("#")[1]
         const selectedKey = hashPath === "/" ? menuConfig[0].routes[0].path : hashPath
         return (<div className="cnode-menu-wrapper">
-            <div className="avatar-wrapper" style={{ color: "#fff" }}>这是一个头像</div>
+            {/* <div className="avatar-wrapper" style={{ color: "#fff" }}>这是一个头像</div> */}
             <Menu
                 defaultSelectedKeys={[selectedKey]}
                 defaultOpenKeys={[menuConfig[0].path]}

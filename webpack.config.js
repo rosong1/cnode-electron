@@ -153,7 +153,7 @@ module.exports = {
   //   runtimeChunk: true
   // },
   plugins: [
-    new WebpackCleanupPlugin(),
+    // new WebpackCleanupPlugin(),
     new ExtractTextPlugin({
       filename: 'styles.css',
       disable: !isProduction

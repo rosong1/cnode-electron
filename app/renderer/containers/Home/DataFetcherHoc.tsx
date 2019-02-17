@@ -1,6 +1,7 @@
 import * as React from "react";
 import { getTopics } from '@renderer/services'
 import { TopicModel } from '@renderer/models'
+import {fixImgUrl} from '@renderer/util/index'
 
 interface HomeState {
     topics: TopicModel[]
@@ -16,11 +17,6 @@ const dataFetcherHoc = (tab = '') => {
 
         async componentDidMount() {
             const topics = tab ? await getTopics({tab}) : await getTopics()
-            const fixImgUrl = (url: string): string => {
-                return url.indexOf('http') !== -1
-                    ? url
-                    : `https:${url}`
-            }
             const data = topics.data.map(item => ({...item, author: {
                 ...item.author,
                 avatar_url: fixImgUrl(item.author.avatar_url)

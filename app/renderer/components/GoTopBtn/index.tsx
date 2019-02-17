@@ -20,8 +20,10 @@ class GoTopBtn extends React.Component<any, {opacity: number}> {
         window.removeEventListener('scroll', this.scrollEvent)
     }
     scrollEvent = (e) => {
+        const opacity = window.scrollY / this.clientHeight;
+        if (opacity >= 1 && this.opacity >= 1) return null
         return window.requestAnimationFrame(() => 
-            this.opacity = Number((window.scrollY / this.clientHeight).toFixed(2))
+            this.opacity = Number(opacity.toFixed(2))
         )
     }
     private toTop = () => {
@@ -29,7 +31,7 @@ class GoTopBtn extends React.Component<any, {opacity: number}> {
     }
     render() {
         return (<div style={{opacity: this.opacity}} className="goback-btn" onClick={this.toTop}>
-            回到顶部
+            ⬆︎
         </div>)
     }
 }

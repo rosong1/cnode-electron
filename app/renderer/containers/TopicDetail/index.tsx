@@ -26,7 +26,9 @@ export default class TopicDetail extends React.Component<TopicDetailProps, Topic
     constructor(props) {
         super(props);
         this.state = {
-            data: {}
+            data: {
+                replies: [],
+            }
         }
     }
     async componentDidMount() {
@@ -41,6 +43,7 @@ export default class TopicDetail extends React.Component<TopicDetailProps, Topic
     }
 
     render() {
+        const {replies} = this.state.data
         return <div className="topic-detail-wrapper" >
                 <BackBtn />
 
@@ -53,7 +56,7 @@ export default class TopicDetail extends React.Component<TopicDetailProps, Topic
                 dangerouslySetInnerHTML={{ 
                     __html: this.state.data && addProtol(this.state.data.content) }}>
             </div>
-            <CommentList dataSource={[1, 2]}></CommentList>
+            <CommentList dataSource={replies}></CommentList>
         </div>;
     }
 }
